@@ -11,11 +11,12 @@ return new class extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
 
-            $table->foreignId('user_id')
+            $table
+                ->foreignId('user_id')
                 ->constrained()
                 ->onDelete('cascade');
 
-            $table->bigInteger('amount');
+            $table->decimal('amount');
             $table->string('description');
             $table->timestamps();
         });
