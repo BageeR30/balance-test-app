@@ -17,8 +17,13 @@ return new class extends Migration
                 ->onDelete('cascade');
 
             $table->decimal('amount');
-            $table->string('description');
+            $table->string('status');
+            $table->string('description')->nullable();
             $table->timestamps();
+
+            $table->index(['user_id', 'created_at']);
+            $table->index(['user_id', 'updated_at']);
+            $table->fullText('description');
         });
     }
 
