@@ -1,7 +1,7 @@
 <template>
     <page-layout title="History">
-        <el-card class="card" shadow="never">
-            <el-card shadow="never">
+        <el-card body-class="card" shadow="never">
+            <el-row>
                 <el-input v-model="search" placeholder="Search" @input="handleSearch()" />
 
                 <el-table
@@ -25,7 +25,7 @@
                     v-model:page-size="perPage"
                     @change="handleChange"
                 />
-            </el-card>
+            </el-row>
         </el-card>
     </page-layout>
 </template>
@@ -57,17 +57,8 @@
 
 </script>
 
-<style scoped>
-    .card {
-        margin: 10px;
-        height: 100%;
-
-        * {
-            margin-bottom: 10px;
-        }
-    }
-
-    .pull-right {
-        float: right;
+<style lang="scss" scoped>
+    .el-row > * {
+        margin-bottom: 10px;
     }
 </style>

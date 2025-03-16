@@ -2,9 +2,9 @@
     <Head :title="title" />
 
     <AppLayout>
-        <el-card class="card" shadow="never">
+        <el-space direction="vertical" fill>
             <slot />
-        </el-card>
+        </el-space>
     </AppLayout>
 </template>
 
@@ -16,14 +16,3 @@
         title: String,
     });
 </script>
-
-<style scoped>
-    .card {
-        margin: 10px;
-        height: 100%;
-
-        * {
-            margin-bottom: 10px;
-        }
-    }
-</style>
