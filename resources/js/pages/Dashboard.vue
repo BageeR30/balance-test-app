@@ -1,36 +1,54 @@
-<script setup lang="ts">
-import AppLayout from '@/layouts/AppLayout.vue';
-import { type BreadcrumbItem } from '@/types';
-import { Head } from '@inertiajs/vue3';
-import PlaceholderPattern from '../components/PlaceholderPattern.vue';
-
-const breadcrumbs: BreadcrumbItem[] = [
-    {
-        title: 'Dashboard',
-        href: '/dashboard',
-    },
-];
-</script>
-
 <template>
     <Head title="Dashboard" />
 
     <AppLayout :breadcrumbs="breadcrumbs">
-        <div class="flex h-full flex-1 flex-col gap-4 rounded-xl p-4">
-            <div class="grid auto-rows-min gap-4 md:grid-cols-3">
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-                <div class="relative aspect-video overflow-hidden rounded-xl border border-sidebar-border/70 dark:border-sidebar-border">
-                    <PlaceholderPattern />
-                </div>
-            </div>
-            <div class="relative min-h-[100vh] flex-1 rounded-xl border border-sidebar-border/70 dark:border-sidebar-border md:min-h-min">
-                <PlaceholderPattern />
-            </div>
-        </div>
+        <el-card class="card" shadow="never">
+            <el-card shadow="never">
+                Balance: ${{ balance }}
+            </el-card>
+
+            <el-card shadow="never">
+                <div>Last transactions</div>
+
+                <el-table :data="transactions" border>
+                    <el-table-column prop="id" label="ID"/>
+                    <el-table-column prop="status" label="Status" />
+                    <el-table-column prop="amount" label="Amount" />
+                    <el-table-column prop="description" label="Description" />
+                    <el-table-column prop="created_at" label="Created at" />
+                    <el-table-column prop="updated_at" label="Updated at" />
+                </el-table>
+            </el-card>
+        </el-card>
     </AppLayout>
 </template>
+
+<script setup>
+    import AppLayout from '@/layouts/AppLayout.vue';
+    import {Head, usePoll} from '@inertiajs/vue3';
+
+    const breadcrumbs = [
+        {
+            title: 'Dashboard',
+            href: '/dashboard',
+        },
+    ];
+
+    defineProps({
+        balance: Number,
+        transactions: Array,
+    })
+
+    usePoll(5000)
+</script>
+
+<style scoped>
+    .card {
+        margin: 10px;
+        height: 100%;
+
+        * {
+            margin-bottom: 10px;
+        }
+    }
+</style>
