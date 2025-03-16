@@ -1,7 +1,5 @@
 <template>
-    <Head title="History" />
-
-    <AppLayout :breadcrumbs="breadcrumbs">
+    <page-layout title="History">
         <el-card class="card" shadow="never">
             <el-card shadow="never">
                 <el-input v-model="search" placeholder="Search" @input="handleSearch()" />
@@ -29,21 +27,14 @@
                 />
             </el-card>
         </el-card>
-    </AppLayout>
+    </page-layout>
 </template>
 
 <script setup>
-    import AppLayout from '@/layouts/AppLayout.vue';
-    import {Head, router} from '@inertiajs/vue3';
+    import {router} from '@inertiajs/vue3';
     import {ref} from "vue";
     import _ from 'lodash';
-
-    const breadcrumbs = [
-        {
-            title: 'History',
-            href: '/history',
-        },
-    ];
+    import PageLayout from "@/layouts/PageLayout.vue";
 
     const props = defineProps({
         items: Object,

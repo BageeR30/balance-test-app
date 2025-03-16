@@ -1,7 +1,5 @@
 <template>
-    <Head title="Dashboard" />
-
-    <AppLayout :breadcrumbs="breadcrumbs">
+    <page-layout title="Dashboard">
         <el-card class="card" shadow="never">
             <el-card shadow="never">
                 Balance: ${{ balance }}
@@ -20,26 +18,19 @@
                 </el-table>
             </el-card>
         </el-card>
-    </AppLayout>
+    </page-layout>
 </template>
 
 <script setup>
-    import AppLayout from '@/layouts/AppLayout.vue';
-    import {Head, usePoll} from '@inertiajs/vue3';
-
-    const breadcrumbs = [
-        {
-            title: 'Dashboard',
-            href: '/dashboard',
-        },
-    ];
+    import {usePoll} from '@inertiajs/vue3';
+    import PageLayout from "@/layouts/PageLayout.vue";
 
     defineProps({
         balance: Number,
         transactions: Array,
-    })
+    });
 
-    usePoll(5000)
+    usePoll(5000);
 </script>
 
 <style scoped>
