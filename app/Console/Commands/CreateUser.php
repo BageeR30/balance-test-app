@@ -12,8 +12,7 @@ class CreateUser extends Command
 {
     protected $signature = 'app:create-user';
 
-
-    protected $description = 'Creates User';
+    protected $description = 'Create User';
 
     public function handle(): void
     {
