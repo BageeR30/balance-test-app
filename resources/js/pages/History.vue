@@ -19,7 +19,6 @@
                 </el-table>
 
                 <el-pagination
-                    class="pull-right"
                     layout="sizes, prev, pager, next"
                     :total="items.total"
                     v-model:page-size="perPage"
