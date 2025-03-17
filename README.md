@@ -26,4 +26,6 @@ This project is a web application to manage user balances using the following te
 7. Run `sail npm i`.
 8. Run `sail npm run dev`.
 
+For queue to work, run `sail artisan queue:work`.
+
 Now you can visit the application at [http://localhost](http://localhost).
